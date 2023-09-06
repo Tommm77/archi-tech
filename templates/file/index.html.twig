@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Files{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h2>My Files</h2>
+
+    {% if isAdmin %}
+    <div class="alert alert-info">
+        You are logged in as an admin.
+    </div>
+    {% endif %}
+
+    {% if files|length > 0 %}
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Filename</th>
+                <th>Filepath</th>
+                <th>Size</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Upload Date</th>
+                <th>Create Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for file in files %}
+            <tr>
+                <td>{{ file.getId() }}</td>
+                <td>{{ file.getFilename() }}</td>
+                <td>{{ file.getFilepath() }}</td>
+                <td>{{ file.getFilesize() }} bytes</td>
+                <td>{{ file.getFiletype() }}</td>
+                <td>{{ file.getDescription() }}</td>
+                <td>{{ file.getUploadDate()|date('d-m-Y H:i') }}</td>
+                <td>{{ file.getCreateDate()|date('d-m-Y H:i') }}</td>
+                <td>
+                    <a href="{{ file.getFilepath() }}" class="btn btn-primary btn-sm" target="_blank">Open</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="mt-3">You don't have any files yet.</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}
