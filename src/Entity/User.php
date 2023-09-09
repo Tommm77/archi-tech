@@ -33,6 +33,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'owner', targetEntity: File::class, orphanRemoval: true)]
     private Collection $files;
 
+    #[ORM\Column]
+    private ?int $storage = null;
+
+    #[ORM\Column]
+    private ?int $usestorage = null;
+
     public function __construct()
     {
         $this->files = new ArrayCollection();
@@ -134,6 +140,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $file->setOwner(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getStorage(): ?int
+    {
+        return $this->storage;
+    }
+
+    public function setStorage(int $storage): static
+    {
+        $this->storage = $storage;
+
+        return $this;
+    }
+
+    public function getUsestorage(): ?int
+    {
+        return $this->usestorage;
+    }
+
+    public function setUsestorage(int $usestorage): static
+    {
+        $this->usestorage = $usestorage;
 
         return $this;
     }
