@@ -1,0 +1,22 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content_title %}Dashboard{% endblock %}
+
+{% block main %}
+    <div class="my-3">
+        <h2>Statistics</h2>
+        <ul>
+            <li>Total files uploaded: {{ totalFiles }}</li>
+            <li>Files uploaded today: {{ filesToday }}</li>
+        </ul>
+    </div>
+
+    <div class="my-3">
+        <h2>Files per User</h2>
+        <ul>
+        {% for data in filesPerUser %}
+            <li>User ID {{ data.userId }}: {{ data.fileCount }} files</li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

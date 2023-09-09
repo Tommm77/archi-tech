@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -13,11 +14,46 @@ use App\Entity\User;
 
 class DashboardController extends AbstractDashboardController
 {
+
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
-        $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
-        return $this->redirect($adminUrlGenerator->setController(FileCrudController::class)->generateUrl());
+        // Nombre total de fichiers uploadés
+        $totalFiles = $this->entityManager->getRepository(File::class)->count([]);
+
+        // Nombre de fichiers uploadés aujourd'hui
+        $today = new \DateTime('today');
+        $tomorrow = new \DateTime('tomorrow');
+        $filesTodayCount = $this->entityManager->getRepository(File::class)
+                                    ->createQueryBuilder('f')
+                                    ->select('COUNT(f.id)')
+                                    ->where('f.uploadDate >= :today')
+                                    ->andWhere('f.uploadDate < :tomorrow')
+                                    ->setParameter('today', $today)
+                                    ->setParameter('tomorrow', $tomorrow)
+                                    ->getQuery()
+                                    ->getSingleScalarResult();
+
+        // Répartition du nombre de fichiers par utilisateur
+        $filesPerUser = $this->entityManager->getRepository(File::class)
+                                     ->createQueryBuilder('f')
+                                     ->select('IDENTITY(f.owner) as userId, COUNT(f.id) as fileCount')
+                                     ->groupBy('f.owner')
+                                     ->getQuery()
+                                     ->getResult();
+
+        return $this->render('admin/dashboard.html.twig', [
+            'totalFiles' => $totalFiles,
+            'filesToday' => $filesTodayCount,
+            'filesPerUser' => $filesPerUser,
+        ]);
     }
 
     public function configureDashboard(): Dashboard
