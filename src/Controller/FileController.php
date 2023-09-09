@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
 use App\Entity\File;
+use App\Entity\User;
 
 class FileController extends AbstractController
 {
@@ -35,10 +36,8 @@ class FileController extends AbstractController
             /** @var UploadedFile $uploadedFile */
             $uploadedFile = $request->files->get('file');
             if ($uploadedFile) {
-                // Stockez uniquement les informations sans déplacer le fichier
                 $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
 
-                // Créez et stockez l'entité File
                 $file = new File();
                 $file->setFilename($originalFilename);
                 $file->setFilesize($uploadedFile->getSize());
@@ -59,6 +58,27 @@ class FileController extends AbstractController
 
         return $this->render('file/upload.html.twig');
     }
+
+    #[Route('/file/{id}/delete', name: 'file_delete', methods: ['GET'])]
+public function delete(int $id): Response
+{
+    $file = $this->entityManager->getRepository(File::class)->find($id);
+    if (!$file) {
+        throw $this->createNotFoundException('The file does not exist.');
+    }
+
+    // Vérifiez si l'utilisateur actuel est le propriétaire du fichier ou s'il est admin
+    if ($file->getOwner() === $this->getUser() || $this->isGranted('ROLE_ADMIN')) {
+        $this->entityManager->remove($file);
+        $this->entityManager->flush();
+
+        $this->addFlash('success', 'File deleted successfully!');
+    } else {
+        $this->addFlash('error', 'You do not have permission to delete this file.');
+    }
+
+    return $this->redirectToRoute('my_files');
+}
 
 
 }
