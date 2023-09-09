@@ -34,10 +34,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $files;
 
     #[ORM\Column]
-    private ?int $storage = null;
+    private ?float $storage = 20;
 
     #[ORM\Column]
-    private ?int $usestorage = null;
+    private ?float $usestorage = 0;
 
     public function __construct()
     {
@@ -123,26 +123,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     public function addFile(File $file): static
-    {
-        if (!$this->files->contains($file)) {
-            $this->files->add($file);
-            $file->setOwner($this);
-        }
-
-        return $this;
+{
+    if (!$this->files->contains($file)) {
+        $this->files->add($file);
+        $file->setOwner($this);
+        $this->setUsestorage($this->calculateUsedStorage());
     }
 
-    public function removeFile(File $file): static
-    {
-        if ($this->files->removeElement($file)) {
-            // set the owning side to null (unless already changed)
-            if ($file->getOwner() === $this) {
-                $file->setOwner(null);
-            }
-        }
+    return $this;
+}
 
-        return $this;
+public function removeFile(File $file): static
+{
+    if ($this->files->removeElement($file)) {
+        // set the owning side to null (unless already changed)
+        if ($file->getOwner() === $this) {
+            $file->setOwner(null);
+        }
+        $this->setUsestorage($this->calculateUsedStorage());
     }
+
+    return $this;
+}
 
     public function getStorage(): ?int
     {
@@ -156,15 +158,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getUsestorage(): ?int
+    public function getUsestorage(): ?float
     {
         return $this->usestorage;
     }
 
-    public function setUsestorage(int $usestorage): static
+    public function setUsestorage(float $usestorage): static
     {
         $this->usestorage = $usestorage;
 
         return $this;
+    }
+
+    public function calculateUsedStorage(): int
+    {
+        $totalSize = 0;
+        foreach ($this->files as $file) {
+            $totalSize += $file->getFilesize();
+        }
+        return $totalSize;
     }
 }
