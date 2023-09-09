@@ -69,6 +69,12 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
 
+    $(document).ready(function() {
+            setTimeout(function() {
+                $(".alert").fadeOut("slow");
+            }, 2000);
+        });
+
         $(document).ready(function() {
             $('#searchInput').on('keyup', function() {
                 var value = $(this).val().toLowerCase();

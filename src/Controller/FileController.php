@@ -51,8 +51,10 @@ class FileController extends AbstractController
                 $this->entityManager->persist($file);
                 $this->entityManager->flush();
 
-                $this->addFlash('success', 'File details saved successfully!');
+                $this->addFlash('success', 'File uploaded and details saved successfully!');
                 return $this->redirectToRoute('my_files');
+            } else {
+                $this->addFlash('error', 'No file uploaded.');
             }
         }
 
