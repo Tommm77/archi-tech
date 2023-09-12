@@ -10,6 +10,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
 use App\Entity\File;
 use App\Entity\User;
+use Knp\Snappy\Pdf;
+use App\Repository\UserRepository;
 
 class FileController extends AbstractController
 {
@@ -102,6 +104,31 @@ class FileController extends AbstractController
 
         return $this->redirectToRoute('my_files');
     }
+
+    #[Route("/generate-invoice/{userId}", name: "generate_invoice")]
+    public function generateInvoice(int $userId, Pdf $snappy, UserRepository $userRepository)
+{
+    $user = $userRepository->find($userId);
+
+    if (!$user) {
+        throw $this->createNotFoundException('Utilisateur non trouvé.');
+    }
+
+    $html = $this->renderView('invoice.html.twig', [
+        'user' => $user
+    ]);
+
+    $filename = 'facture_' . date('Y-m-d') . '.pdf';
+
+    return new Response(
+        $snappy->getOutputFromHtml($html),
+        200,
+        [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="' . $filename . '"'
+        ]
+    );
+}
 
 
 

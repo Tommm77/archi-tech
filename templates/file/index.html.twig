@@ -14,6 +14,7 @@
 
     <div class="mb-3">
         <a href="{{ path('file_upload') }}" class="btn btn-success">Upload New File</a>
+        <a href="{{ path('generate_invoice', {'userId': app.user.id}) }}" class="btn btn-primary">Télécharger la Facture</a>
     </div>
 
     {% if files|length > 0 %}
