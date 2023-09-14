@@ -9,11 +9,13 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Form\RegistrationFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 
 class RegistrationController extends AbstractController
 {
     #[Route(path: '/register', name: 'app_register')]
-    public function register(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordEncoder): Response
+    public function register(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordEncoder, MailerInterface $mailer): Response
     {
         $form = $this->createForm(RegistrationFormType::class);
 
@@ -26,6 +28,20 @@ class RegistrationController extends AbstractController
             $plainPassword = $form->get('password')->getData();
             $hashedPassword = $passwordEncoder->hashPassword($user, $plainPassword);
             $user->setPassword($hashedPassword);
+
+            //email
+            $email = (new Email())
+            ->from('hello@example.com')
+            ->to('you@example.com')
+            //->cc('cc@example.com')
+            //->bcc('bcc@example.com')
+            //->replyTo('fabien@example.com')
+            //->priority(Email::PRIORITY_HIGH)
+            ->subject('Time for Symfony Mailer!')
+            ->text('Sending emails is fun again!')
+            ->html('<p>See Twig integration for better HTML integration!</p>');
+
+            $mailer->send($email);
 
             $entityManager->persist($user);
             $entityManager->flush();
