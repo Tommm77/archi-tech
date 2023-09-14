@@ -70,7 +70,6 @@ class FileController extends AbstractController
                 $file->setFilepath('uploads/' . $originalFilename);
 
                 $this->entityManager->persist($file);
-
                 $user = $this->getUser();
                 $currentUseStorage = $user->getUsestorage();
                 $user->setUsestorage($currentUseStorage + $filesizeInGB);

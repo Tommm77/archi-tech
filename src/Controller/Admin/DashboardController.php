@@ -25,7 +25,10 @@ class DashboardController extends AbstractDashboardController
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
+        // Nombre total de fichiers uploadés
         $totalFiles = $this->entityManager->getRepository(File::class)->count([]);
+
+        // Nombre de fichiers uploadés aujourd'hui
         $today = new \DateTime('today');
         $tomorrow = new \DateTime('tomorrow');
         $filesTodayCount = $this->entityManager->getRepository(File::class)
