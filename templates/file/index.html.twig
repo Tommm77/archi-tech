@@ -7,17 +7,18 @@
     <h2>My Files</h2>
 
     <div class="mb-3">
-        <p>Stockage utilisé : {{ app.user.usestorage |number_format(2, '.', ' ')}} Go / {{ app.user.storage }} Go</p>
-        {% if app.user.usestorage >= app.user.storage %}
-            <div class="alert alert-warning">
-                Vous avez atteint ou dépassé votre limite de stockage. Veuillez acheter 20 Go supplémentaires pour continuer.
-            </div>
-        {% elseif app.user.usestorage >= (app.user.storage * 0.9) %}
-            <div class="alert alert-info">
-                Vous approchez de votre limite de stockage. Pensez à acheter plus de stockage si nécessaire.
-            </div>
-        {% endif %}
-    </div>
+    <p>Storage used: {{ app.user.usestorage |number_format(2, '.', ' ')}} GB / {{ app.user.storage }} GB</p>
+    {% if app.user.usestorage >= app.user.storage %}
+        <div class="alert alert-warning">
+            You have reached or exceeded your storage limit. Please purchase an additional 20 GB to continue.
+        </div>
+    {% elseif app.user.usestorage >= (app.user.storage * 0.9) %}
+        <div class="alert alert-info">
+            You are approaching your storage limit. Consider purchasing more storage if needed.
+        </div>
+    {% endif %}
+</div>
+
 
     {% if isAdmin %}
     <div class="alert alert-info">
@@ -27,8 +28,9 @@
 
     <div class="mb-3">
         <a href="{{ path('file_upload') }}" class="btn btn-success">Upload New File</a>
-        <a href="{{ path('generate_invoice', {'userId': app.user.id}) }}" class="btn btn-primary">Télécharger la Facture</a>
-        <a href="{{ path('delete_account') }}" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre compte? Tous vos fichiers seront également supprimés.');">Supprimer mon compte</a>
+        <a href="{{ path('generate_invoice', {'userId': app.user.id}) }}" class="btn btn-primary">Download Invoice</a>
+        <a href="{{ path('delete_account') }}" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre compte? Tous vos fichiers seront également supprimés.');">Delete Account</a>
+        <a href="{{ path('app_logout') }}" class="btn btn-warning">Log Out</a>
     </div>
 
     {% if files|length > 0 %}
