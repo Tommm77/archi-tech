@@ -39,9 +39,29 @@ class UserController extends AbstractController {
             ['email' => $user->getEmail()]));
         $mailer->send($email);
 
+        $query = $entityManager->createQuery('
+            SELECT u
+            FROM App\Entity\User u
+            WHERE u.roles LIKE :roleAdmin
+            AND u.roles LIKE :roleUser
+        ')
+        ->setParameters([
+            'roleAdmin' => '%ROLE_ADMIN%',
+            'roleUser' => '%ROLE_USER%'
+        ]);
+
+$adminUsers = $query->getResult();
+
+    // Collectez leurs adresses e-mail
+    $adminEmails = [];
+    foreach ($adminUsers as $adminUser) {
+        $adminEmails[] = $adminUser->getEmail();
+    }
+
+    // Créez et envoyez l'e-mail
     $adminEmail = (new Email())
         ->from('admin@example.com')
-        ->to('admin@example.com')
+        ->to(...$adminEmails) // Utilisez l'opérateur de décomposition pour passer le tableau d'adresses e-mail
         ->subject('Un utilisateur a supprimé son compte')
         ->html($this->renderView('emails/admin_notification.html.twig', [
             'email' => $user->getEmail(),
