@@ -1,14 +1,14 @@
 {% extends 'base_email.html.twig' %}
 
 {% block content %}
-<h1>Notification de suppression de compte utilisateur</h1>
-<p>Bonjour Administrateur,</p>
-<p>L'utilisateur {{ email }} a supprimé son compte de notre plateforme. Voici quelques détails :</p>
+<h1>User Account Deletion Notification</h1>
+<p>Hello Administrator,</p>
+<p>The user {{ email }} has deleted their account from our platform. Here are some details:</p>
 <ul>
-    <li>Nom d'utilisateur : {{ email }}</li>
-    <li>Nombre de fichiers supprimés : {{ fileCount }}</li>
+    <li>Username: {{ email }}</li>
+    <li>Number of files deleted: {{ fileCount }}</li>
 </ul>
-<p>Si des actions supplémentaires sont nécessaires, veuillez les effectuer.</p>
-<p>Cordialement,</p>
-<p>L'équipe [ArchiTech]</p>
+<p>If any further actions are required, please carry them out.</p>
+<p>Best regards,</p>
+<p>The [ArchiTech] Team</p>
 {% endblock %}
