@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Notification</title>
+    <style>
+        .email-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .email-container h1 {
+            text-align: center;
+        }
+        .email-container p {
+            text-align: justify;
+        }
+        .email-container a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .email-container a:hover {
+            background-color: #0069d9;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
