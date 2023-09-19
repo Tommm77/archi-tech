@@ -6,6 +6,19 @@
 <div class="container mt-5">
     <h2>My Files</h2>
 
+    <div class="mb-3">
+        <p>Stockage utilisé : {{ app.user.usestorage |number_format(2, '.', ' ')}} Go / {{ app.user.storage }} Go</p>
+        {% if app.user.usestorage >= app.user.storage %}
+            <div class="alert alert-warning">
+                Vous avez atteint ou dépassé votre limite de stockage. Veuillez acheter 20 Go supplémentaires pour continuer.
+            </div>
+        {% elseif app.user.usestorage >= (app.user.storage * 0.9) %}
+            <div class="alert alert-info">
+                Vous approchez de votre limite de stockage. Pensez à acheter plus de stockage si nécessaire.
+            </div>
+        {% endif %}
+    </div>
+
     {% if isAdmin %}
     <div class="alert alert-info">
         You are logged in as an admin.
@@ -74,7 +87,7 @@
     $(document).ready(function() {
             setTimeout(function() {
                 $(".alert").fadeOut("slow");
-            }, 2000);
+            }, 5000);
         });
 
         $(document).ready(function() {

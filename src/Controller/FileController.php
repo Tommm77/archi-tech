@@ -34,6 +34,9 @@ class FileController extends AbstractController
     #[Route('/upload', name: 'file_upload', methods: ['POST', 'GET'])]
     public function upload(Request $request): Response
     {
+        $user = $this->getUser();
+        $storage = $user->getStorage();
+        $usestorage = $user->getUsestorage();
         if ($request->isMethod('POST')) {
             /** @var UploadedFile $uploadedFile */
             $uploadedFile = $request->files->get('file');
@@ -54,6 +57,11 @@ class FileController extends AbstractController
 
                 // Convertir la taille du fichier en Go
                 $filesizeInGB = round($uploadedFile->getSize() / (1024 ** 3), 2);
+
+                if ($storage + $filesizeInGB > $usestorage) {
+                    $this->addFlash('error', 'Vous avez dépassé votre limite de stockage. Achetez 20 Go supplémentaires pour continuer.');
+                    return $this->redirectToRoute('my_files');
+                }
 
                 // Récupérer l'utilisateur actuel et mettre à jour usestorage
                 $user = $this->getUser();

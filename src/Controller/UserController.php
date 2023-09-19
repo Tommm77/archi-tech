@@ -52,16 +52,14 @@ class UserController extends AbstractController {
 
 $adminUsers = $query->getResult();
 
-    // Collectez leurs adresses e-mail
     $adminEmails = [];
     foreach ($adminUsers as $adminUser) {
         $adminEmails[] = $adminUser->getEmail();
     }
 
-    // Créez et envoyez l'e-mail
     $adminEmail = (new Email())
         ->from('admin@example.com')
-        ->to(...$adminEmails) // Utilisez l'opérateur de décomposition pour passer le tableau d'adresses e-mail
+        ->to(...$adminEmails)
         ->subject('Un utilisateur a supprimé son compte')
         ->html($this->renderView('emails/admin_notification.html.twig', [
             'email' => $user->getEmail(),

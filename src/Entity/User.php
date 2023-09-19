@@ -122,6 +122,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->files;
     }
 
+    public function hasExceededStorageLimit(): bool {
+        return $this->useStorage > $this->totalStorage;
+    }
+
     public function addFile(File $file): static
 {
     if (!$this->files->contains($file)) {

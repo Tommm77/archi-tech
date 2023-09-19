@@ -25,10 +25,7 @@ class DashboardController extends AbstractDashboardController
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
-        // Nombre total de fichiers uploadés
         $totalFiles = $this->entityManager->getRepository(File::class)->count([]);
-
-        // Nombre de fichiers uploadés aujourd'hui
         $today = new \DateTime('today');
         $tomorrow = new \DateTime('tomorrow');
         $filesTodayCount = $this->entityManager->getRepository(File::class)
@@ -41,7 +38,6 @@ class DashboardController extends AbstractDashboardController
                                     ->getQuery()
                                     ->getSingleScalarResult();
 
-        // Répartition du nombre de fichiers par utilisateur
         $filesPerUser = $this->entityManager->getRepository(File::class)
                                      ->createQueryBuilder('f')
                                      ->select('IDENTITY(f.owner) as userId, COUNT(f.id) as fileCount')
