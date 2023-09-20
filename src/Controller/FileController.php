@@ -43,27 +43,33 @@ class FileController extends AbstractController
             if ($uploadedFile) {
                 $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
 
-                $file = new File();
-                $file->setFilename($originalFilename);
-                $file->setFilesize($uploadedFile->getSize());
-                $file->setFiletype($uploadedFile->getMimeType());
-                $file->setDescription($request->request->get('description'));
-                $file->setUploadDate(new \DateTime());
-                $file->setCreateDate(new \DateTime());
-                $file->setOwner($this->getUser());
-                $file->setFilepath("uploads/test/");
+                $mimeType = $uploadedFile->getMimeType();
 
-                $this->entityManager->persist($file);
+                $filesize = $uploadedFile->getSize();
 
-                // Convertir la taille du fichier en Go
-                $filesizeInGB = round($uploadedFile->getSize() / (1024 ** 3), 2);
+                $filesizeInGB = round($filesize / (1024 ** 3), 2);
 
-                if ($storage + $filesizeInGB > $usestorage) {
+                if ($usestorage + $filesizeInGB > $storage) {
                     $this->addFlash('error', 'Vous avez dépassé votre limite de stockage. Achetez 20 Go supplémentaires pour continuer.');
                     return $this->redirectToRoute('my_files');
                 }
 
-                // Récupérer l'utilisateur actuel et mettre à jour usestorage
+                $destination = realpath($this->getParameter('kernel.project_dir').'/public/uploads/');
+                    $uploadedFile->move($destination, $originalFilename);
+
+
+                $file = new File();
+                $file->setFilename($originalFilename);
+                $file->setFiletype($mimeType);
+                $file->setDescription($request->request->get('description'));
+                $file->setFilesize($filesize);
+                $file->setUploadDate(new \DateTime());
+                $file->setCreateDate(new \DateTime());
+                $file->setOwner($this->getUser());
+                $file->setFilepath('uploads/' . $originalFilename);
+
+                $this->entityManager->persist($file);
+
                 $user = $this->getUser();
                 $currentUseStorage = $user->getUsestorage();
                 $user->setUsestorage($currentUseStorage + $filesizeInGB);
