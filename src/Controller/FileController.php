@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -142,6 +143,18 @@ class FileController extends AbstractController
             'Content-Disposition' => 'inline; filename="' . $filename . '"'
         ]
     );
+}
+
+#[Route("/uploads/{filename}", name: "serve_file")]
+public function serveFile(string $filename)
+{
+    $file = $this->getParameter('kernel.project_dir').'/public/uploads/'.$filename;
+
+    if (!file_exists($file)) {
+        throw $this->createNotFoundException('The file does not exist.'.$filename);
+    }
+
+    return new BinaryFileResponse($file);
 }
 
 
