@@ -23,28 +23,39 @@ class RegistrationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
             $user->setRoles(['ROLE_USER']);
-
+    
             // Hachez le mot de passe
             $plainPassword = $form->get('password')->getData();
             $hashedPassword = $passwordEncoder->hashPassword($user, $plainPassword);
             $user->setPassword($hashedPassword);
-
-            //email
+    
+            // Traitement du paiement Stripe
+            try {
+                $stripe = new \Stripe\StripeClient('sk_test_51MFEKKDGn9OEbzeVDxtulXPmF5ZIjwYvllLm6iSn1mbpoDGA6KbpPKVw9miB1hEk4QhacAkqMCs9NCQFJrgvn6nU00Q8feXeOE');
+                $charge = $stripe->charges->create([
+                    'amount' => 2000, // en centimes
+                    'currency' => 'usd',
+                    'description' => 'Frais inscription',
+                    'source' => $_POST['stripeToken'],
+                ]);
+            } catch (\Stripe\Exception\CardException $e) {
+                $this->addFlash('error', 'Erreur de paiement: ' . $e->getError()->message);
+                return $this->redirectToRoute('app_register');
+            } 
+    
+            // Envoi d'un email de confirmation
             $email = (new Email())
-            ->from('hello@example.com')
-            ->to('you@example.com')
-            //->cc('cc@example.com')
-            //->bcc('bcc@example.com')
-            //->replyTo('fabien@example.com')
-            //->priority(Email::PRIORITY_HIGH)
-            ->subject('Time for Symfony Mailer!')
-            ->text('Sending emails is fun again!')
-            ->html('<p>See Twig integration for better HTML integration!</p>');
-
+                ->from('hello@example.com')
+                ->to('you@example.com')
+                ->subject('Time for Symfony Mailer!')
+                ->text('Sending emails is fun again!')
+                ->html('<p>See Twig integration for better HTML integration!</p>');
             $mailer->send($email);
-
+    
+            // Persistance de l'utilisateur dans la base de données
             $entityManager->persist($user);
             $entityManager->flush();
+    
             return $this->redirectToRoute('app_login');
         }
 
@@ -52,4 +63,5 @@ class RegistrationController extends AbstractController
             'registrationForm' => $form->createView(),
         ]);
     }
+
 }
