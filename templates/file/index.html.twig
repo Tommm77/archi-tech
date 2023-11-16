@@ -6,7 +6,6 @@
 <div class="container mt-5">
     <h2>My Files</h2>
 
-<<<<<<< HEAD
     <div class="mb-3">
     <p>Storage used: {{ app.user.usestorage |number_format(2, '.', ' ')}} GB / {{ app.user.storage }} GB</p>
     {% if app.user.usestorage >= app.user.storage %}
@@ -20,9 +19,6 @@
     {% endif %}
 </div>
 
-
-=======
->>>>>>> 6195ff2 (mailer2)
     {% if isAdmin %}
     <div class="alert alert-info">
         You are logged in as an admin.
@@ -31,12 +27,9 @@
 
     <div class="mb-3">
         <a href="{{ path('file_upload') }}" class="btn btn-success">Upload New File</a>
-<<<<<<< HEAD
         <a href="{{ path('generate_invoice', {'userId': app.user.id}) }}" class="btn btn-primary">Download Invoice</a>
         <a href="{{ path('delete_account') }}" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre compte? Tous vos fichiers seront également supprimés.');">Delete Account</a>
         <a href="{{ path('app_logout') }}" class="btn btn-warning">Log Out</a>
-=======
->>>>>>> 6195ff2 (mailer2)
     </div>
 
     {% if files|length > 0 %}
@@ -55,14 +48,9 @@
                 <th class="sortable" data-sort="type">Type <i class="fas fa-sort"></i></th>
                 <th class="sortable" data-sort="description">Description <i class="fas fa-sort"></i></th>
                 <th class="sortable" data-sort="upload-date">Upload Date <i class="fas fa-sort"></i></th>
-<<<<<<< HEAD
                 <th class="sortable" data-sort="create-date">Create Date <i class="fas fa-sort"></i></th>
                 <th>View</th>
                 <th>Delete</th>
-=======
-                <th class="sortable" data-sort="create-date">Crate Date <i class="fas fa-sort"></i></th>
-                <th>Actions</th>
->>>>>>> 6195ff2 (mailer2)
             </tr>
         </thead>
         <tbody>
@@ -77,12 +65,9 @@
                 <td>{{ file.getUploadDate()|date('d-m-Y H:i') }}</td>
                 <td>{{ file.getCreateDate()|date('d-m-Y H:i') }}</td>
                 <td>
-<<<<<<< HEAD
                     <a href="{{ path('serve_file', {'filename': file.getFilename()}) }}" target="_blank" class="btn btn-info btn-sm">View</a>
                 </td>
                 <td>
-=======
->>>>>>> 6195ff2 (mailer2)
                     <a href="{{ path('file_delete', {'id': file.getId()}) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this file?');">Delete</a>
                 </td>
             </tr>
@@ -107,11 +92,7 @@
     $(document).ready(function() {
             setTimeout(function() {
                 $(".alert").fadeOut("slow");
-<<<<<<< HEAD
             }, 5000);
-=======
-            }, 2000);
->>>>>>> 6195ff2 (mailer2)
         });
 
         $(document).ready(function() {

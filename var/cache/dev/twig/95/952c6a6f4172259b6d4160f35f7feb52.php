@@ -203,7 +203,7 @@ class __TwigTemplate_b614b633a437a3c16a9c64df8aef7a2a extends Template
         echo "
     <script src=\"https://js.stripe.com/v3/\"></script>
     <script>
-        var stripe = Stripe('pk_test_51MFEKKDGn9OEbzeVBv3DHO7kcsQ2WslsAhQBHnhVeJL99Jp229PmpoLO8gE7y8BmL1bsutLqsp0ltabHyVuaxOCl002jsQfEHl');
+        var stripe = Stripe('pk_test_51MFEq4GwodRabcetbbA4qk1CbsmUMSjdbtYgUR5BPvfPsTog9uljV54sKAFHvHFWFKVHcfjiuf1Dl4sB9UpAGuV500eBhBjwXI');
         var elements = stripe.elements();
         var card = elements.create('card');
         card.mount('#card-element');
@@ -321,7 +321,7 @@ class __TwigTemplate_b614b633a437a3c16a9c64df8aef7a2a extends Template
     {{ parent() }}
     <script src=\"https://js.stripe.com/v3/\"></script>
     <script>
-        var stripe = Stripe('pk_test_51MFEKKDGn9OEbzeVBv3DHO7kcsQ2WslsAhQBHnhVeJL99Jp229PmpoLO8gE7y8BmL1bsutLqsp0ltabHyVuaxOCl002jsQfEHl');
+        var stripe = Stripe('pk_test_51MFEq4GwodRabcetbbA4qk1CbsmUMSjdbtYgUR5BPvfPsTog9uljV54sKAFHvHFWFKVHcfjiuf1Dl4sB9UpAGuV500eBhBjwXI');
         var elements = stripe.elements();
         var card = elements.create('card');
         card.mount('#card-element');

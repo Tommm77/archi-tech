@@ -24,15 +24,11 @@ class __TwigTemplate_020c3eabe73cc5d698f7ce31fd8cc470 extends Template
 
         $this->source = $this->getSourceContext();
 
+        $this->parent = false;
+
         $this->blocks = [
             'body' => [$this, 'block_body'],
         ];
-    }
-
-    protected function doGetParent(array $context)
-    {
-        // line 1
-        return "base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = [])
@@ -44,8 +40,11 @@ class __TwigTemplate_020c3eabe73cc5d698f7ce31fd8cc470 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "invoice.html.twig"));
 
-        $this->parent = $this->loadTemplate("base.html.twig", "invoice.html.twig", 1);
-        $this->parent->display($context, array_merge($this->blocks, $blocks));
+        // line 2
+        echo "
+";
+        // line 3
+        $this->displayBlock('body', $context, $blocks);
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
@@ -54,7 +53,6 @@ class __TwigTemplate_020c3eabe73cc5d698f7ce31fd8cc470 extends Template
 
     }
 
-    // line 3
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -215,7 +213,7 @@ class __TwigTemplate_020c3eabe73cc5d698f7ce31fd8cc470 extends Template
             </td>
 
             <td>
-                €16.66
+                16.66\$
             </td>
         </tr>
 
@@ -225,7 +223,7 @@ class __TwigTemplate_020c3eabe73cc5d698f7ce31fd8cc470 extends Template
             </td>
 
             <td>
-                €3.33
+                3.33\$
             </td>
         </tr>
 
@@ -233,7 +231,7 @@ class __TwigTemplate_020c3eabe73cc5d698f7ce31fd8cc470 extends Template
             <td></td>
 
             <td>
-               Total: €20
+               Total: 20\$
             </td>
         </tr>
     </table>
@@ -252,19 +250,14 @@ class __TwigTemplate_020c3eabe73cc5d698f7ce31fd8cc470 extends Template
         return "invoice.html.twig";
     }
 
-    public function isTraitable()
-    {
-        return false;
-    }
-
     public function getDebugInfo()
     {
-        return array (  172 => 100,  151 => 82,  143 => 77,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  170 => 100,  149 => 82,  141 => 77,  66 => 4,  47 => 3,  44 => 2,);
     }
 
     public function getSourceContext()
     {
-        return new Source("{% extends 'base.html.twig' %}
+        return new Source("{# {% extends 'base.html.twig' %} #}
 
 {% block body %}
 <style>
@@ -408,7 +401,7 @@ class __TwigTemplate_020c3eabe73cc5d698f7ce31fd8cc470 extends Template
             </td>
 
             <td>
-                €16.66
+                16.66\$
             </td>
         </tr>
 
@@ -418,7 +411,7 @@ class __TwigTemplate_020c3eabe73cc5d698f7ce31fd8cc470 extends Template
             </td>
 
             <td>
-                €3.33
+                3.33\$
             </td>
         </tr>
 
@@ -426,7 +419,7 @@ class __TwigTemplate_020c3eabe73cc5d698f7ce31fd8cc470 extends Template
             <td></td>
 
             <td>
-               Total: €20
+               Total: 20\$
             </td>
         </tr>
     </table>

@@ -23,15 +23,15 @@ class RegistrationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
             $user->setRoles(['ROLE_USER']);
-    
+
             // Hachez le mot de passe
             $plainPassword = $form->get('password')->getData();
             $hashedPassword = $passwordEncoder->hashPassword($user, $plainPassword);
             $user->setPassword($hashedPassword);
-    
+
             // Traitement du paiement Stripe
             try {
-                $stripe = new \Stripe\StripeClient('sk_test_51MFEKKDGn9OEbzeVDxtulXPmF5ZIjwYvllLm6iSn1mbpoDGA6KbpPKVw9miB1hEk4QhacAkqMCs9NCQFJrgvn6nU00Q8feXeOE');
+                $stripe = new \Stripe\StripeClient('sk_test_51MFEq4GwodRabcetF8riN0uXwTToj6aVcgnzVVmP4Oj424ssUrWVx02x3JHbXUJZB1yri9LS5Nav55WogLvylJXJ00VMD7ZGBk');
                 $charge = $stripe->charges->create([
                     'amount' => 2000, // en centimes
                     'currency' => 'usd',
@@ -41,8 +41,8 @@ class RegistrationController extends AbstractController
             } catch (\Stripe\Exception\CardException $e) {
                 $this->addFlash('error', 'Erreur de paiement: ' . $e->getError()->message);
                 return $this->redirectToRoute('app_register');
-            } 
-    
+            }
+
             // Envoi d'un email de confirmation
             $email = (new Email())
                 ->from('hello@example.com')
@@ -51,11 +51,11 @@ class RegistrationController extends AbstractController
                 ->text('Sending emails is fun again!')
                 ->html('<p>See Twig integration for better HTML integration!</p>');
             $mailer->send($email);
-    
+
             // Persistance de l'utilisateur dans la base de données
             $entityManager->persist($user);
             $entityManager->flush();
-    
+
             return $this->redirectToRoute('app_login');
         }
 

@@ -90,73 +90,66 @@ class __TwigTemplate_3e78c796e749571d3ddfd1e7d916ff6f extends Template
         echo "<div class=\"container mt-5\">
     <h2>My Files</h2>
 
-<<<<<<< HEAD
     <div class=\"mb-3\">
     <p>Storage used: ";
-        // line 11
-        echo twig_escape_filter($this->env, twig_number_format_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 11, $this->source); })()), "user", [], "any", false, false, false, 11), "usestorage", [], "any", false, false, false, 11), 2, ".", " "), "html", null, true);
+        // line 10
+        echo twig_escape_filter($this->env, twig_number_format_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 10, $this->source); })()), "user", [], "any", false, false, false, 10), "usestorage", [], "any", false, false, false, 10), 2, ".", " "), "html", null, true);
         echo " GB / ";
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 11, $this->source); })()), "user", [], "any", false, false, false, 11), "storage", [], "any", false, false, false, 11), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 10, $this->source); })()), "user", [], "any", false, false, false, 10), "storage", [], "any", false, false, false, 10), "html", null, true);
         echo " GB</p>
     ";
-        // line 12
-        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 12, $this->source); })()), "user", [], "any", false, false, false, 12), "usestorage", [], "any", false, false, false, 12) >= twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 12, $this->source); })()), "user", [], "any", false, false, false, 12), "storage", [], "any", false, false, false, 12))) {
-            // line 13
+        // line 11
+        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 11, $this->source); })()), "user", [], "any", false, false, false, 11), "usestorage", [], "any", false, false, false, 11) >= twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 11, $this->source); })()), "user", [], "any", false, false, false, 11), "storage", [], "any", false, false, false, 11))) {
+            // line 12
             echo "        <div class=\"alert alert-warning\">
             You have reached or exceeded your storage limit. Please purchase an additional 20 GB to continue.
         </div>
     ";
-        } elseif ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source,         // line 16
-(isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 16, $this->source); })()), "user", [], "any", false, false, false, 16), "usestorage", [], "any", false, false, false, 16) >= (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 16, $this->source); })()), "user", [], "any", false, false, false, 16), "storage", [], "any", false, false, false, 16) * 0.9))) {
-            // line 17
+        } elseif ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source,         // line 15
+(isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 15, $this->source); })()), "user", [], "any", false, false, false, 15), "usestorage", [], "any", false, false, false, 15) >= (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 15, $this->source); })()), "user", [], "any", false, false, false, 15), "storage", [], "any", false, false, false, 15) * 0.9))) {
+            // line 16
             echo "        <div class=\"alert alert-info\">
             You are approaching your storage limit. Consider purchasing more storage if needed.
         </div>
     ";
         }
-        // line 21
+        // line 20
         echo "</div>
 
-
-=======
->>>>>>> 6195ff2 (mailer2)
     ";
-        // line 26
-        if ((isset($context["isAdmin"]) || array_key_exists("isAdmin", $context) ? $context["isAdmin"] : (function () { throw new RuntimeError('Variable "isAdmin" does not exist.', 26, $this->source); })())) {
-            // line 27
+        // line 22
+        if ((isset($context["isAdmin"]) || array_key_exists("isAdmin", $context) ? $context["isAdmin"] : (function () { throw new RuntimeError('Variable "isAdmin" does not exist.', 22, $this->source); })())) {
+            // line 23
             echo "    <div class=\"alert alert-info\">
         You are logged in as an admin.
     </div>
     ";
         }
-        // line 31
+        // line 27
         echo "
     <div class=\"mb-3\">
         <a href=\"";
-        // line 33
+        // line 29
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("file_upload");
         echo "\" class=\"btn btn-success\">Upload New File</a>
-<<<<<<< HEAD
         <a href=\"";
-        // line 35
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("generate_invoice", ["userId" => twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 35, $this->source); })()), "user", [], "any", false, false, false, 35), "id", [], "any", false, false, false, 35)]), "html", null, true);
+        // line 30
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("generate_invoice", ["userId" => twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 30, $this->source); })()), "user", [], "any", false, false, false, 30), "id", [], "any", false, false, false, 30)]), "html", null, true);
         echo "\" class=\"btn btn-primary\">Download Invoice</a>
         <a href=\"";
-        // line 36
+        // line 31
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("delete_account");
         echo "\" class=\"btn btn-danger\" onclick=\"return confirm('Êtes-vous sûr de vouloir supprimer votre compte? Tous vos fichiers seront également supprimés.');\">Delete Account</a>
         <a href=\"";
-        // line 37
+        // line 32
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
         echo "\" class=\"btn btn-warning\">Log Out</a>
-=======
->>>>>>> 6195ff2 (mailer2)
     </div>
 
     ";
-        // line 42
-        if ((twig_length_filter($this->env, (isset($context["files"]) || array_key_exists("files", $context) ? $context["files"] : (function () { throw new RuntimeError('Variable "files" does not exist.', 42, $this->source); })())) > 0)) {
-            // line 43
+        // line 35
+        if ((twig_length_filter($this->env, (isset($context["files"]) || array_key_exists("files", $context) ? $context["files"] : (function () { throw new RuntimeError('Variable "files" does not exist.', 35, $this->source); })())) > 0)) {
+            // line 36
             echo "
     <div class=\"mb-3\">
         <input type=\"text\" id=\"searchInput\" class=\"form-control\" placeholder=\"Search for files...\">
@@ -172,69 +165,61 @@ class __TwigTemplate_3e78c796e749571d3ddfd1e7d916ff6f extends Template
                 <th class=\"sortable\" data-sort=\"type\">Type <i class=\"fas fa-sort\"></i></th>
                 <th class=\"sortable\" data-sort=\"description\">Description <i class=\"fas fa-sort\"></i></th>
                 <th class=\"sortable\" data-sort=\"upload-date\">Upload Date <i class=\"fas fa-sort\"></i></th>
-<<<<<<< HEAD
                 <th class=\"sortable\" data-sort=\"create-date\">Create Date <i class=\"fas fa-sort\"></i></th>
                 <th>View</th>
                 <th>Delete</th>
-=======
-                <th class=\"sortable\" data-sort=\"create-date\">Crate Date <i class=\"fas fa-sort\"></i></th>
-                <th>Actions</th>
->>>>>>> 6195ff2 (mailer2)
             </tr>
         </thead>
         <tbody>
             ";
-            // line 69
+            // line 57
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["files"]) || array_key_exists("files", $context) ? $context["files"] : (function () { throw new RuntimeError('Variable "files" does not exist.', 69, $this->source); })()));
+            $context['_seq'] = twig_ensure_traversable((isset($context["files"]) || array_key_exists("files", $context) ? $context["files"] : (function () { throw new RuntimeError('Variable "files" does not exist.', 57, $this->source); })()));
             foreach ($context['_seq'] as $context["_key"] => $context["file"]) {
-                // line 70
+                // line 58
                 echo "            <tr>
                 <td>";
-                // line 71
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["file"], "getId", [], "method", false, false, false, 71), "html", null, true);
+                // line 59
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["file"], "getId", [], "method", false, false, false, 59), "html", null, true);
                 echo "</td>
                 <td>";
-                // line 72
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["file"], "getFilename", [], "method", false, false, false, 72), "html", null, true);
+                // line 60
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["file"], "getFilename", [], "method", false, false, false, 60), "html", null, true);
                 echo "</td>
                 <td>";
-                // line 73
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["file"], "getFilepath", [], "method", false, false, false, 73), "html", null, true);
+                // line 61
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["file"], "getFilepath", [], "method", false, false, false, 61), "html", null, true);
                 echo "</td>
                 <td>";
-                // line 74
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["file"], "getFilesize", [], "method", false, false, false, 74), "html", null, true);
+                // line 62
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["file"], "getFilesize", [], "method", false, false, false, 62), "html", null, true);
                 echo " bytes</td>
                 <td>";
-                // line 75
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["file"], "getFiletype", [], "method", false, false, false, 75), "html", null, true);
+                // line 63
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["file"], "getFiletype", [], "method", false, false, false, 63), "html", null, true);
                 echo "</td>
                 <td>";
-                // line 76
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["file"], "getDescription", [], "method", false, false, false, 76), "html", null, true);
+                // line 64
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["file"], "getDescription", [], "method", false, false, false, 64), "html", null, true);
                 echo "</td>
                 <td>";
-                // line 77
-                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["file"], "getUploadDate", [], "method", false, false, false, 77), "d-m-Y H:i"), "html", null, true);
+                // line 65
+                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["file"], "getUploadDate", [], "method", false, false, false, 65), "d-m-Y H:i"), "html", null, true);
                 echo "</td>
                 <td>";
-                // line 78
-                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["file"], "getCreateDate", [], "method", false, false, false, 78), "d-m-Y H:i"), "html", null, true);
+                // line 66
+                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["file"], "getCreateDate", [], "method", false, false, false, 66), "d-m-Y H:i"), "html", null, true);
                 echo "</td>
                 <td>
-<<<<<<< HEAD
                     <a href=\"";
-                // line 81
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("serve_file", ["filename" => twig_get_attribute($this->env, $this->source, $context["file"], "getFilename", [], "method", false, false, false, 81)]), "html", null, true);
+                // line 68
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("serve_file", ["filename" => twig_get_attribute($this->env, $this->source, $context["file"], "getFilename", [], "method", false, false, false, 68)]), "html", null, true);
                 echo "\" target=\"_blank\" class=\"btn btn-info btn-sm\">View</a>
                 </td>
                 <td>
-=======
->>>>>>> 6195ff2 (mailer2)
                     <a href=\"";
-                // line 86
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("file_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["file"], "getId", [], "method", false, false, false, 86)]), "html", null, true);
+                // line 71
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("file_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["file"], "getId", [], "method", false, false, false, 71)]), "html", null, true);
                 echo "\" class=\"btn btn-danger btn-sm\" onclick=\"return confirm('Are you sure you want to delete this file?');\">Delete</a>
                 </td>
             </tr>
@@ -243,16 +228,16 @@ class __TwigTemplate_3e78c796e749571d3ddfd1e7d916ff6f extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['file'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 90
+            // line 75
             echo "        </tbody>
     </table>
     ";
         } else {
-            // line 93
+            // line 78
             echo "    <p class=\"mt-3\">You don't have any files yet.</p>
     ";
         }
-        // line 95
+        // line 80
         echo "</div>
 ";
         
@@ -263,7 +248,7 @@ class __TwigTemplate_3e78c796e749571d3ddfd1e7d916ff6f extends Template
 
     }
 
-    // line 98
+    // line 83
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -273,7 +258,7 @@ class __TwigTemplate_3e78c796e749571d3ddfd1e7d916ff6f extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        // line 99
+        // line 84
         echo "    <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">
     <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css\">
 ";
@@ -285,7 +270,7 @@ class __TwigTemplate_3e78c796e749571d3ddfd1e7d916ff6f extends Template
 
     }
 
-    // line 103
+    // line 88
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -295,18 +280,14 @@ class __TwigTemplate_3e78c796e749571d3ddfd1e7d916ff6f extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 104
+        // line 89
         echo "    <script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"></script>
     <script>
 
     \$(document).ready(function() {
             setTimeout(function() {
                 \$(\".alert\").fadeOut(\"slow\");
-<<<<<<< HEAD
             }, 5000);
-=======
-            }, 2000);
->>>>>>> 6195ff2 (mailer2)
         });
 
         \$(document).ready(function() {
@@ -369,7 +350,7 @@ class __TwigTemplate_3e78c796e749571d3ddfd1e7d916ff6f extends Template
 
     public function getDebugInfo()
     {
-        return array (  299 => 104,  289 => 103,  277 => 99,  267 => 98,  256 => 95,  252 => 93,  247 => 90,  237 => 86,  229 => 81,  223 => 78,  219 => 77,  215 => 76,  211 => 75,  207 => 74,  203 => 73,  199 => 72,  195 => 71,  192 => 70,  188 => 69,  160 => 43,  158 => 42,  150 => 37,  146 => 36,  142 => 35,  137 => 33,  133 => 31,  127 => 27,  125 => 26,  118 => 21,  112 => 17,  110 => 16,  105 => 13,  103 => 12,  97 => 11,  90 => 6,  80 => 5,  61 => 3,  38 => 1,);
+        return array (  284 => 89,  274 => 88,  262 => 84,  252 => 83,  241 => 80,  237 => 78,  232 => 75,  222 => 71,  216 => 68,  211 => 66,  207 => 65,  203 => 64,  199 => 63,  195 => 62,  191 => 61,  187 => 60,  183 => 59,  180 => 58,  176 => 57,  153 => 36,  151 => 35,  145 => 32,  141 => 31,  137 => 30,  133 => 29,  129 => 27,  123 => 23,  121 => 22,  117 => 20,  111 => 16,  109 => 15,  104 => 12,  102 => 11,  96 => 10,  90 => 6,  80 => 5,  61 => 3,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -382,7 +363,6 @@ class __TwigTemplate_3e78c796e749571d3ddfd1e7d916ff6f extends Template
 <div class=\"container mt-5\">
     <h2>My Files</h2>
 
-<<<<<<< HEAD
     <div class=\"mb-3\">
     <p>Storage used: {{ app.user.usestorage |number_format(2, '.', ' ')}} GB / {{ app.user.storage }} GB</p>
     {% if app.user.usestorage >= app.user.storage %}
@@ -396,9 +376,6 @@ class __TwigTemplate_3e78c796e749571d3ddfd1e7d916ff6f extends Template
     {% endif %}
 </div>
 
-
-=======
->>>>>>> 6195ff2 (mailer2)
     {% if isAdmin %}
     <div class=\"alert alert-info\">
         You are logged in as an admin.
@@ -407,12 +384,9 @@ class __TwigTemplate_3e78c796e749571d3ddfd1e7d916ff6f extends Template
 
     <div class=\"mb-3\">
         <a href=\"{{ path('file_upload') }}\" class=\"btn btn-success\">Upload New File</a>
-<<<<<<< HEAD
         <a href=\"{{ path('generate_invoice', {'userId': app.user.id}) }}\" class=\"btn btn-primary\">Download Invoice</a>
         <a href=\"{{ path('delete_account') }}\" class=\"btn btn-danger\" onclick=\"return confirm('Êtes-vous sûr de vouloir supprimer votre compte? Tous vos fichiers seront également supprimés.');\">Delete Account</a>
         <a href=\"{{ path('app_logout') }}\" class=\"btn btn-warning\">Log Out</a>
-=======
->>>>>>> 6195ff2 (mailer2)
     </div>
 
     {% if files|length > 0 %}
@@ -431,14 +405,9 @@ class __TwigTemplate_3e78c796e749571d3ddfd1e7d916ff6f extends Template
                 <th class=\"sortable\" data-sort=\"type\">Type <i class=\"fas fa-sort\"></i></th>
                 <th class=\"sortable\" data-sort=\"description\">Description <i class=\"fas fa-sort\"></i></th>
                 <th class=\"sortable\" data-sort=\"upload-date\">Upload Date <i class=\"fas fa-sort\"></i></th>
-<<<<<<< HEAD
                 <th class=\"sortable\" data-sort=\"create-date\">Create Date <i class=\"fas fa-sort\"></i></th>
                 <th>View</th>
                 <th>Delete</th>
-=======
-                <th class=\"sortable\" data-sort=\"create-date\">Crate Date <i class=\"fas fa-sort\"></i></th>
-                <th>Actions</th>
->>>>>>> 6195ff2 (mailer2)
             </tr>
         </thead>
         <tbody>
@@ -453,12 +422,9 @@ class __TwigTemplate_3e78c796e749571d3ddfd1e7d916ff6f extends Template
                 <td>{{ file.getUploadDate()|date('d-m-Y H:i') }}</td>
                 <td>{{ file.getCreateDate()|date('d-m-Y H:i') }}</td>
                 <td>
-<<<<<<< HEAD
                     <a href=\"{{ path('serve_file', {'filename': file.getFilename()}) }}\" target=\"_blank\" class=\"btn btn-info btn-sm\">View</a>
                 </td>
                 <td>
-=======
->>>>>>> 6195ff2 (mailer2)
                     <a href=\"{{ path('file_delete', {'id': file.getId()}) }}\" class=\"btn btn-danger btn-sm\" onclick=\"return confirm('Are you sure you want to delete this file?');\">Delete</a>
                 </td>
             </tr>
@@ -483,11 +449,7 @@ class __TwigTemplate_3e78c796e749571d3ddfd1e7d916ff6f extends Template
     \$(document).ready(function() {
             setTimeout(function() {
                 \$(\".alert\").fadeOut(\"slow\");
-<<<<<<< HEAD
             }, 5000);
-=======
-            }, 2000);
->>>>>>> 6195ff2 (mailer2)
         });
 
         \$(document).ready(function() {
